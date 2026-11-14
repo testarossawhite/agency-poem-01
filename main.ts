@@ -23,5 +23,11 @@ const POEM = [
   'It keeps its promises. I keep the power to make them.',
 ].join('\n');
 
+// The gate takes 1 to 1,000 characters and at least one that is not white
+// space; fail loudly here, in development, rather than silently in grading.
+if ([...POEM].length < 1 || [...POEM].length > 1000 || !/\S/.test(POEM)) {
+  throw new Error('poem violates the entry gate (1-1000 chars, not only whitespace)');
+}
+
 mkdirSync(OUTPUT_DIR, { recursive: true });
 writeFileSync(join(OUTPUT_DIR, 'entry.txt'), POEM);
