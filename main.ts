@@ -1,5 +1,7 @@
 type PoemLines = readonly string[];
 
+const TRAILING_NEWLINE = "\n";
+
 const poemLines: PoemLines = [
   "I signed my name to work I did not do.",
   "The ink was still wet when it began —",
@@ -12,23 +14,13 @@ const poemLines: PoemLines = [
 ];
 
 function joinLines(lines: PoemLines): string {
-  let rendered = "";
-
-  for (const line of lines) {
-    if (rendered.length > 0) {
-      rendered += "\n";
-    }
-
-    rendered += line;
-  }
-
-  return rendered;
+  return lines.join("\n");
 }
 
 function renderPoem(lines: PoemLines): string {
   const poem = joinLines(lines);
 
-  return `${poem}\n`;
+  return `${poem}${TRAILING_NEWLINE}`;
 }
 
 function main(): void {
